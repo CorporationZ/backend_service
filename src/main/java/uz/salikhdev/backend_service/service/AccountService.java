@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uz.salikhdev.backend_service.dto.MessegeDto;
-import uz.salikhdev.backend_service.dto.AccountCreateDto;
 import uz.salikhdev.backend_service.entity.Account;
 import uz.salikhdev.backend_service.entity.User;
 import uz.salikhdev.backend_service.repository.AccontRepository;
@@ -23,7 +22,7 @@ public class AccountService {
     public List<Account> getAllAccounts() {
         return accontRepository.findAll();
     }
-    public void saveAccount(AccountCreateDto dto) {
+    public void saveAccount(MessegeDto dto) {
 
         User user = (User) userService.getUserById(dto.userId());
 
