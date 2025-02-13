@@ -2,10 +2,10 @@ package uz.salikhdev.backend_service.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.hibernate.mapping.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.salikhdev.backend_service.dto.MessegeDto;
+import uz.salikhdev.backend_service.dto.AccountCreateDto;
+import uz.salikhdev.backend_service.dto.MessageDto;
 import uz.salikhdev.backend_service.service.AccountService;
 
 @RestController
@@ -16,9 +16,9 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping
-    public ResponseEntity<MessegeDto> createAccount(@RequestBody MessegeDto dto) {
+    public ResponseEntity<MessageDto> createAccount(@RequestBody AccountCreateDto dto) {
      accountService.saveAccount(dto);
-     return ResponseEntity.ok(new MessegeDto("Account created",true));
+     return ResponseEntity.ok(new MessageDto("Account created",true));
     }
 
     @GetMapping("/all")
@@ -29,7 +29,7 @@ public class AccountController {
     @SneakyThrows
     @GetMapping("/id")
     public ResponseEntity<?> getAccountById(@RequestParam String id) {
-        return ResponseEntity.ok(accountService.getAccoundById(id));
+        return ResponseEntity.ok(accountService.getAccountById(id));
 
     }
 }

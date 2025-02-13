@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ExceptionHandlerController {
-@ExceptionHandler({RuntimeException.class})
+
+    @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
-    return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-}
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

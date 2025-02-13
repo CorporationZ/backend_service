@@ -3,12 +3,10 @@ package uz.salikhdev.backend_service.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import uz.salikhdev.backend_service.dto.MessegeDto;
+import uz.salikhdev.backend_service.dto.AccountCreateDto;
 import uz.salikhdev.backend_service.entity.Account;
-import uz.salikhdev.backend_service.entity.User;
 import uz.salikhdev.backend_service.repository.AccontRepository;
 
-import javax.security.auth.login.AccountNotFoundException;
 import java.util.List;
 
 @Service
@@ -22,21 +20,28 @@ public class AccountService {
     public List<Account> getAllAccounts() {
         return accontRepository.findAll();
     }
-    public void saveAccount(MessegeDto dto) {
 
-        User user = (User) userService.getUserById(dto.());
+    public void saveAccount(AccountCreateDto dto) {
+
+        var user = userService.getUserById(dto.userId());
 
         Account account = Account.builder()
-                .accountNumber(dto.message())
+                .accountNumber(dto.accountNumber())
+                .balance(0.0)
                 .user(user)
                 .build();
 
+        accontRepository.save(account);
     }
-    public Account getAccoundById(String accountId) throws AccountNotFoundException {
-        return accontRepository.findById(accountId).orElseThrow(() -> new AccountNotFoundException("Account not found"));
+
+    public Account getAccountById(String accountId) {
+        return accontRepository.findById(accountId)
+                .orElseThrow(
+                        () -> new RuntimeException("Account not found")
+                );
     }
+
     public void deleteAccount(String accountId) {
         accontRepository.deleteById(accountId);
     }
-
 }
