@@ -27,8 +27,7 @@ public class AccountService {
         User user = (User) userService.getUserById(dto.userId());
 
         Account account = Account.builder()
-                .accountNumber()
-                .balance()
+                .accountNumber(dto.message())
                 .user(user)
                 .build();
 

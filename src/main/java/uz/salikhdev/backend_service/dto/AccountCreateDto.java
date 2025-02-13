@@ -4,9 +4,8 @@ import lombok.Builder;
 
 @Builder
 public record AccountCreateDto(
-         String accountNumber,
-         Double balance,
-         String userId
-
+       String userId,
+       Double balance,
+       String accountNumber
 ) {
 }
