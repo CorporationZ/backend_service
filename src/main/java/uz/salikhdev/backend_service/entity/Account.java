@@ -23,6 +23,6 @@ public class Account {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private My_user user;
 
 }

@@ -1,5 +1,6 @@
 package uz.salikhdev.backend_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class My_user {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Account> account = new HashSet<>();
+    @JsonBackReference
+    private Set<Account> accounts = new HashSet<>();
 
 }
