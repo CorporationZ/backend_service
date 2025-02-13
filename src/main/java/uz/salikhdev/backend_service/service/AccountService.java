@@ -24,7 +24,7 @@ public class AccountService {
     }
     public void saveAccount(MessegeDto dto) {
 
-        User user = (User) userService.getUserById(dto.userId());
+        User user = (User) userService.getUserById(dto.());
 
         Account account = Account.builder()
                 .accountNumber(dto.message())
