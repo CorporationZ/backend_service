@@ -2,15 +2,14 @@ package uz.salikhdev.backend_service.repositroy;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import uz.salikhdev.backend_service.entity.Teacher;
+import uz.salikhdev.backend_service.entity.Customer;
 
 import java.util.Optional;
 
 @Repository
-public interface TeacherRepository extends JpaRepository<Teacher, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-
-    Optional<Teacher> findByEmail(String email);
+    Optional<Customer> findByEmail(String email);
 
     boolean existsByEmail(String email);
 }
