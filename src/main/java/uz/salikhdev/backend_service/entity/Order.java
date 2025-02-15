@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "orders") // "order" PostgreSQL'da kalit so'z, shuning uchun "orders" nomi yaxshiroq.
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -18,12 +18,12 @@ public class Order {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id") // ✅ TO‘G‘RILANDI
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
     @ManyToMany
     @JoinTable(
-            name = "order_products", // Oraliq jadval nomi
+            name = "order_products",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
