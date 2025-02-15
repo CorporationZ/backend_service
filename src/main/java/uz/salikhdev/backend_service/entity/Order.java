@@ -1,30 +1,29 @@
 package uz.salikhdev.backend_service.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import uz.salikhdev.backend_service.entity.Customer;
-import uz.salikhdev.backend_service.entity.Product;
+import lombok.*;
 
 import java.util.List;
-@Builder
+
 @Entity
-@Getter
-@Setter
-@Table(name = "orders") // "order" SQL da maxsus so‘z bo‘lgani uchun "orders" deb nomlaymiz
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "orders") // "order" PostgreSQL'da kalit so'z, shuning uchun "orders" nomi yaxshiroq.
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "customer_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id") // ✅ TO‘G‘RILANDI
     private Customer customer;
 
     @ManyToMany
     @JoinTable(
-            name = "order_product",
+            name = "order_products", // Oraliq jadval nomi
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
