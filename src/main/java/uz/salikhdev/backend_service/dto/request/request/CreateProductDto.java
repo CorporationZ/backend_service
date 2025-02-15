@@ -1,4 +1,4 @@
-package uz.salikhdev.backend_service.dto;
+package uz.salikhdev.backend_service.dto.request.request;
 
 import lombok.Builder;
 

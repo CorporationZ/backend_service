@@ -1,13 +1,14 @@
 package uz.salikhdev.backend_service.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import uz.salikhdev.backend_service.entity.Customer;
 import uz.salikhdev.backend_service.entity.Product;
 
 import java.util.List;
-
+@Builder
 @Entity
 @Getter
 @Setter
