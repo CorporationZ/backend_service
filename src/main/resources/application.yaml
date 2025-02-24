@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: backend_service
+
+  datasource:
+    username: salikhdev
+    password: 1234
+    url: jdbc:postgresql://localhost:5432/java_10
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+security:
+  jwt:
+    secret-key: Asdawsfcxwerwr234rfrctr3124drfxc5tc2v4f2drexcf1342d
+    expiration-time: 86400000
+
