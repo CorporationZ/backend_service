@@ -11,6 +11,7 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+
 }
 
 configurations {
@@ -19,21 +20,44 @@ configurations {
     }
 }
 
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    dependencies {
+        // Spring Boot Web for REST APIs
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+
+        // Spring Data Redis
+        implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+        // Redis driver (Lettuce)
+        implementation 'io.lettuce.core:lettuce-core'
+
+        // Apache Kafka for event-driven architecture
+        implementation 'org.springframework.kafka:spring-kafka'
+
+        // JSON Serialization (for Kafka messages)
+        implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+        // Lombok (Optional, for reducing boilerplate code)
+        implementation 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        // Spring Boot DevTools (Optional, for auto-reloading during development)
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+        // Testing dependencies
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.springframework.kafka:spring-kafka-test'
+
+
+    }
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
